@@ -2,12 +2,11 @@ import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 import App from "./App";
 
-
 import { createGlobalStyle } from "styled-components";
 import { theme } from "./theme";
 import ReactDOM from "react-dom";
 import React from "react";
-
+import { QueryClient, QueryClientProvider } from "react-query";
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
 html, body, div, span, applet, object, iframe,
@@ -29,7 +28,7 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-}
+};
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -40,10 +39,9 @@ table {
 body {
   font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
-  color:black;
+  color:${(props)=>props.theme.white.darker};
   line-height: 1.2;
-  height: 200vh;
-  
+  background-color: black;
 }
 a {
   text-decoration:none;
@@ -53,15 +51,16 @@ ul li {
   list-style: none;
 }
 `;
-
+const client = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
+     <QueryClientProvider client={client}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <App />
+        </ThemeProvider>
+     </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
