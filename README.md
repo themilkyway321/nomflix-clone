@@ -44,3 +44,17 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+```
+npm
+
+
+npm i --save-dev @types/styled-components
+npm install styled-components@5.3.10
+npm i react-router-dom@5.3.3 react-query
+npm i --save-dev @types/react-router-dom
+npm i framer-motion
+npm i recoil 
+
+npm install react-hook-form
+```
